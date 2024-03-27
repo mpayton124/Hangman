@@ -26,7 +26,8 @@ h1 {
     align-items: center;
 }
 
-.play-button, .choose-difficulty {
+.play-button,
+.choose-difficulty {
     padding: 10px 20px;
     margin-bottom: 20px;
     font-size: 18px;
@@ -42,7 +43,7 @@ h1 {
     position: absolute;
     background-color: #f9f9f9;
     min-width: 120px;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     z-index: 1;
     border-radius: 5px;
 }
@@ -68,18 +69,50 @@ h1 {
 }
 
 /* specific for hangman-game screen */
-#hangman-game{
+#hangman-game {
     display: flex;
     height: 100%;
     width: 100%;
     justify-content: center;
 }
-.information{
+
+.guessing {
+    width: 20%;
+
+}
+
+.letter-buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.letter-buttons button {
+    margin: 5px;
+    padding: 10px;
+    font-size: 40px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.letter-buttons button:hover {
+    background-color: #c7c793;
+
+}
+
+
+/* we can set a button to disabled with javascript once its already selected or guessed and make it red */
+.letter-buttons button:disabled {
+    background-color: #a94e4e;
+    cursor: not-allowed;
+}
+
+.information {
     width: 20%;
 }
+
 .column {
     padding: 20px;
     border: 1px solid #ccc;
 }
-
-
