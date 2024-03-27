@@ -12,17 +12,19 @@
             <h1>Hangman Game</h1>
         </header>
         <main>
+		<form action = "gamescreen.php" method = "post">
             <div class="buttons-container">
                 <button class="play-button" onclick="window.location.href = 'gamescreen.html';">Play</button>
                 <div class="difficulty-dropdown">
-                    <button class="choose-difficulty">Choose Difficulty</button>
+                    <select class="choose-difficulty" name = "difficulty" id = "difficulty">Choose Difficulty</button>
                     <div class="dropdown-content">
-                        <a href="#">Easy</a>
-                        <a href="#">Medium</a>
-                        <a href="#">Hard</a>
+                        <option value = "easy">Easy</option>
+                        <option value = "medium">Medium</option>
+                        <option value = "hard">Hard</option>
                     </div>
                 </div>
             </div>
+		</form>
         </main>
         <footer>
             <p>Team 6 Web development</p>
