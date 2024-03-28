@@ -8,16 +8,16 @@
 </head>
 <body>
 <?php 
-	if ($_GET["difficulty"] == "easy" {
+	if ($_POST["difficulty"] == "easy") {
 			$difficulty = 'easy';
-        } else if ($_GET["difficulty"] == "medium") {
+        } else if ($_POST["difficulty"] == "medium") {
 			$difficulty = 'medium';
-		} else if ($_GET["difficulty"] == "hard") {
+		} else if ($_POST["difficulty"] == "hard") {
 			$difficulty = 'hard';
 	}
 	
 	$level = 1;
-?>
+?> 
     <div class="container">
         <header>
             <h1>Hangman Game</h1>
