@@ -8,6 +8,8 @@
 </head>
 <body>
 <?php 
+include 'words.php';
+
 	if ($_POST["difficulty"] == "easy") {
 			$difficulty = 'easy';
         } else if ($_POST["difficulty"] == "medium") {
@@ -15,6 +17,18 @@
 		} else if ($_POST["difficulty"] == "hard") {
 			$difficulty = 'hard';
 	}
+    $word = "";
+    if ($difficulty == "easy") {
+        // Select a word from easy difficulty list
+        $word = $words_easy[array_rand($words_easy)];
+    } elseif ($difficulty == "medium") {
+        // Select a word from medium difficulty list
+        $word = $words_med[array_rand($words_med)];
+    } elseif ($difficulty == "hard") {
+        // Select a word from hard difficulty list
+        $word = $words_hard[array_rand($words_hard)];
+    }
+    //
 	
 	$level = 1;
 ?> 
@@ -31,7 +45,7 @@
                 <!-- including level, difficulty, how many guesses left.  -->
                 <p>Your Stats:</p>
                 <p>Level: <?php print $level ?></p>
-				<p>Difficulty: <?php print $_POST["difficulty"] ?></p>
+				<p>Difficulty: <?php print $difficulty ?></p>
 				<p></p>
             </div>
 
@@ -42,7 +56,7 @@
 
                 <div class="word-display">
                     <!-- Word  area -->
-                    <p></p>
+                    <p>Word: <?php echo str_repeat("_ ", strlen($word)); ?></p>
                 </div>
             </div>
 
