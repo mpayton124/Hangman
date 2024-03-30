@@ -1,3 +1,7 @@
+<?php
+session_start();
+// $_SESSION['Testing'] = "THIS IS A TEST";
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -6,6 +10,7 @@
     <title>Hangman Game</title>
     <link rel="stylesheet" href="styles.css">
 </head>
+
 <body>
     <div class="container">
         <header>

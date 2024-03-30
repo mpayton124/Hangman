@@ -9,8 +9,7 @@ $words_easy = array(
     "FISH",
     "BOOK",
     "PENCIL",
-    "APPLE"
-    // Add more words as needed
+    "APPLE"// Add more words as needed
 );
 
 $words_med = array(
@@ -24,7 +23,6 @@ $words_med = array(
     "CELESTIAL",
     "MYSTERIOUS",
     "PHENOMENON"
-    // Add more words as needed
 );
 
 $words_hard = array(
@@ -38,6 +36,6 @@ $words_hard = array(
     "QUIXOTIC",
     "EXQUISITE",
     "RHYTHMIC"
-    // Add more words as needed
+    
 );
 ?>
