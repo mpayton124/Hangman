@@ -8,7 +8,6 @@ include 'words.php';
 	$level = 1; 
 
     function processGuess($guess, $word, $wordDisplay) {
-        $response = "";
         //checking if the guess is correct
         if (strpos($word, $guess) !== false) {
             /// updating the word display to show the correct guess
@@ -25,10 +24,11 @@ include 'words.php';
                 header("Location: win.php");
                 exit();
             }else{
-            $response = "Good guess! Word: " . $_SESSION['wordDisplay'];
+           //want to change buttons to be disabled if they have already been guessed - here is correct, make them green
             } 
         
     }else {
+        //if the guess is incorrect, decrement the attempts, button pressed should be disabled and turned red.
         $_SESSION['attempts']--;
         if ($_SESSION['attempts'] == 0) {
             $_SESSION['win'] = false;
@@ -36,8 +36,6 @@ include 'words.php';
             header("Location: loss.php");
             exit();
         }
-        // $response = "Sorry, '$guess' is not in the word.";
-        // return $response;
     }
 }
     
@@ -76,7 +74,6 @@ if (isset($_POST['difficulty'])) {
 
     if (isset($_POST['guess'])) {
         processGuess($_POST['guess'], $_SESSION['word'], str_split($_SESSION['wordDisplay']));
-        // echo "<script>alert('$response');</script>";
     }
 
     $hangmanImage = "images/hangman-" . (6 - $_SESSION['attempts']) . ".png";
