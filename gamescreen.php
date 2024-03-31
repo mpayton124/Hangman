@@ -53,9 +53,17 @@ include 'words.php';
 //when posting difficulty (from main menu and transition to other words)
 if (isset($_POST['difficulty'])) {
     //gets the difficulty from the form and sets it to the session variable
-    $_SESSION['difficulty'] = $_POST['difficulty'];
-    $difficulty = $_SESSION['difficulty']; //rewrites the difficulty to the session variable easier.
-    $_SESSION['level'] = 1;
+    
+    $_SESSION['progress']['difficulty'] = $_POST['difficulty'];
+    
+    if (isset($_SESSION['progress']['level'])) {
+        $_SESSION['progress']['level']++;
+    } else {
+        $_SESSION['progress']['level'] = 1;
+    }
+    // $_SESSION['progress']['level'] = 1;
+    
+    $difficulty = $_SESSION['progress']['difficulty'];
 
     $_SESSION['guessedLetters'] = [];
 
@@ -74,7 +82,7 @@ if (isset($_POST['difficulty'])) {
     // making the remaining attempts to 6 (syncs with the amt of images we have for hangman)
     $_SESSION['attempts'] = 6;
         $word = $_SESSION['word'];
-        $level = $_SESSION['level'];
+        // $level = $_SESSION['level'];
 }
 
 
@@ -109,8 +117,8 @@ if (isset($_POST['difficulty'])) {
                 <!-- information area -->
                 <!-- including level, difficulty, how many guesses left.  -->
                 <p>Your Stats:</p>
-                <p>Level: <?php print $_SESSION['level'] ?></p>
-				<p>Difficulty: <?php print $_SESSION['difficulty'] ?></p>
+                <p>Level: <?php print $_SESSION['progress']['level'] ?></p>
+				<p>Difficulty: <?php print $_SESSION['progress']['difficulty'] ?></p>
 				<p>Attempts left: <?php print $_SESSION['attempts']?></p>
             </div>
 
