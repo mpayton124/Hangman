@@ -8,7 +8,10 @@ include 'words.php';
 	$level = 1; 
 
     function processGuess($guess, $word, $wordDisplay) {
+        //adding the guessed letter to guessed letters
+        $_SESSION['guessedLetters'][] = $guess;
         //checking if the guess is correct
+        
         if (strpos($word, $guess) !== false) {
             /// updating the word display to show the correct guess
             $wordArray = str_split($word);
@@ -17,6 +20,8 @@ include 'words.php';
                     $wordDisplay[$key] = $guess;
                 }
             }
+
+            
             $_SESSION['wordDisplay'] = implode($wordDisplay);
             if ($_SESSION['wordDisplay'] == $_SESSION['word']) {
                 $_SESSION['win'] = true;
@@ -52,6 +57,8 @@ if (isset($_POST['difficulty'])) {
     $difficulty = $_SESSION['difficulty']; //rewrites the difficulty to the session variable easier.
     $_SESSION['level'] = 1;
 
+    $_SESSION['guessedLetters'] = [];
+
     // choosing the random word list based on the difficulty
     $wordList = [];
     if ($difficulty  == "easy") {
@@ -61,10 +68,10 @@ if (isset($_POST['difficulty'])) {
     } elseif ($difficulty  == "hard") {
         $wordList = $words_hard;
     }
-    $_SESSION['word'] = strtoupper($wordList[array_rand($wordList)]);
+    $_SESSION['word'] = ($wordList[array_rand($wordList)]);
     $_SESSION['wordDisplay'] = str_repeat("_", strlen($_SESSION['word'])); //making the word display start with all underscores
  
-    // reseting  the remaining attempts to 6 i think thats how many they have im not counting
+    // making the remaining attempts to 6 (syncs with the amt of images we have for hangman)
     $_SESSION['attempts'] = 6;
         $word = $_SESSION['word'];
         $level = $_SESSION['level'];
@@ -73,7 +80,10 @@ if (isset($_POST['difficulty'])) {
 
 
     if (isset($_POST['guess'])) {
-        processGuess($_POST['guess'], $_SESSION['word'], str_split($_SESSION['wordDisplay']));
+        $guess = $_POST['guess'];
+        
+
+        processGuess($guess, $_SESSION['word'], str_split($_SESSION['wordDisplay']));
     }
 
     $hangmanImage = "images/hangman-" . (6 - $_SESSION['attempts']) . ".png";
@@ -120,37 +130,25 @@ if (isset($_POST['difficulty'])) {
                 <!-- Guess input area -->
 
                 <p>Guessing part</p>
-                <!-- to add buttons -->
                 <form action="gamescreen.php" method="post">
-                    <div class="letter-buttons">
-                        <button class="letter-button" name="guess" value="A">A</button>
-                        <button class="letter-button" name="guess" value="B">B</button>
-                        <button class="letter-button" name="guess" value="C">C</button>
-                        <button class="letter-button" name="guess" value="D">D</button>
-                        <button class="letter-button" name="guess" value="E">E</button>
-                        <button class="letter-button" name="guess" value="F">F</button>
-                        <button class="letter-button" name="guess" value="G">G</button>
-                        <button class="letter-button" name="guess" value="H">H</button>
-                        <button class="letter-button" name="guess" value="I">I</button>
-                        <button class="letter-button" name="guess" value="J">J</button>
-                        <button class="letter-button" name="guess" value="K">K</button>
-                        <button class="letter-button" name="guess" value="L">L</button>
-                        <button class="letter-button" name="guess" value="M">M</button>
-                        <button class="letter-button" name="guess" value="N">N</button>
-                        <button class="letter-button" name="guess" value="O">O</button>
-                        <button class="letter-button" name="guess" value="P">P</button>
-                        <button class="letter-button" name="guess" value="Q">Q</button>
-                        <button class="letter-button" name="guess" value="R">R</button>
-                        <button class="letter-button" name="guess" value="S">S</button>
-                        <button class="letter-button" name="guess" value="T">T</button>
-                        <button class="letter-button" name="guess" value="U">U</button>
-                        <button class="letter-button" name="guess" value="V">V</button>
-                        <button class="letter-button" name="guess" value="W">W</button>
-                        <button class="letter-button" name="guess" value="X">X</button>
-                        <button class="letter-button" name="guess" value="Y">Y</button>
-                        <button class="letter-button" name="guess" value="Z">Z</button>
-                    </div>
-                </form>
+                <div class="letter-buttons">
+                    <?php
+                    $guessedLetters =  $_SESSION['guessedLetters'] ;
+                    $alphabet = range('A', 'Z');
+                    
+                    foreach ($alphabet as $letter) {
+                        if (in_array($letter, $guessedLetters)) {
+                            $class = in_array($letter, str_split($_SESSION['word'])) ? 'correct-guess' : 'wrong-guess';
+                            $disabled = 'disabled';
+                        } else {
+                            $disabled = '';
+                            $class = '';
+                        }
+                        echo "<button class='letter-button $class' name='guess' value='$letter' $disabled >$letter</button>";
+                    }
+                    ?>
+                </div>
+            </form>
 
                 <p></p>
             </div>
@@ -163,7 +161,7 @@ if (isset($_POST['difficulty'])) {
             <!-- we can replace this with a php function but we dont gotta-->
         </footer>
     </div>
-    <?php var_dump($_SESSION); // for debugging?>  
+    <?php var_dump($_SESSION); // for debugging REMOVE BEFORE WE FINISH?>  
 </body>
 
 </html>
