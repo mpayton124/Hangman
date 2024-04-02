@@ -123,15 +123,16 @@ if (isset($_POST['difficulty'])) {
             </div>
 
             <div class="column hangman">
-                <!-- Hangman area -->
-                <img src="<?php echo $hangmanImage; ?>" alt="Hangman">
-                <!-- if needed we can make it smaller, all of the images are the same size -->
-
                 <div class="word-display">
                     <!-- Word  area -->
                     <p>Word: <?php echo implode(' ', str_split($_SESSION['wordDisplay'])); ?></p>
 
                 </div>
+                <!-- Hangman area -->
+                <img src="<?php echo $hangmanImage; ?>" alt="Hangman">
+                <!-- if needed we can make it smaller, all of the images are the same size -->
+
+                
             </div>
 
             <div class="column guessing">

@@ -1,6 +1,33 @@
 <?php
 session_start();
 
+function updatePoints(){
+    $lines = file("leaderboard_list.txt", FILE_IGNORE_NEW_LINES);
+ 
+    $userToUpdate = $_SESSION['username'];
+    $pointsToAdd = 0;
+    if ($_SESSION['progress']['difficulty'] == "easy"){
+        $pointsToAdd = 1;
+    }else if ($_SESSION['progress']['difficulty'] == "medium"){
+        $pointsToAdd = 3;
+    }else{
+        $pointsToAdd = 5;
+    }
+
+    foreach ($lines as &$line) {
+   
+        list($username, $points) = explode(",", $line);
+        if ($username == $userToUpdate) {        
+            $points = $points + $pointsToAdd;
+        }
+        $line = "$username,$points";
+    }
+    
+    file_put_contents("leaderboard_list.txt", implode("\r\n", $lines));
+    
+    // print"Points updated for $userToUpdate. Added $pointsToAdd points.";
+    
+}
 function finalWinScreen(){
     //go to winning screen
     header("Location: finalwin.php");
@@ -37,6 +64,7 @@ if ($_SESSION['progress']['level'] >= 3){
 <body>
 <?php
  echo "<h2>YOU WON!</h2><br><p>Word: " . $_SESSION['word'] . "</p>";
+ updatePoints();
 ?>
 
 <!-- going back to main menu: -->

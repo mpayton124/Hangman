@@ -1,12 +1,14 @@
 <?php
 session_start();
+var_dump($_SESSION);
 // $_SESSION['Testing'] = "THIS IS A TEST";
+
 $_SESSION['username'] = 'TestUser';
-$_SESSION['points'] = 37;
 
 //flush
 unset($_SESSION['progress']['level']);
 unset($_SESSION['progress']['difficulty']);
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -41,7 +43,7 @@ unset($_SESSION['progress']['difficulty']);
             <h2>Current leaderboard</h2>
             <?php
                 $leaderboard = [];
-
+                $userPoints=0;
                 $fileContents = file_get_contents('leaderboard_list.txt');
                 $lines = explode(PHP_EOL, $fileContents);
                 foreach($lines as $line) {
@@ -49,6 +51,9 @@ unset($_SESSION['progress']['difficulty']);
                     $username = trim($parts[0]);
                     $points = trim($parts[1]);
                     $leaderboard[$username] = $points;
+                    if ($username == $_SESSION['username']) {
+                        $userPoints = $points;
+                    }
                 }
 
                 arsort($leaderboard);//sorts the arrary desc by points
@@ -73,7 +78,7 @@ unset($_SESSION['progress']['difficulty']);
                 }
                 if (!$user_found){
                     echo "<tr><td>...</td><td>...</td></tr>";
-                    echo "<tr style='background-color:#F7D488'><td>".$username."</td><td>".$points."</td></tr>";
+                    echo "<tr style='background-color:#F7D488'><td>".$_SESSION['username']."</td><td>".$userPoints."</td></tr>";
                 }
                
 
