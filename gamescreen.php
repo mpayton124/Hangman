@@ -108,6 +108,7 @@ if (isset($_POST['difficulty'])) {
             <div class="column information">
                 <!-- information area -->
                 <!-- including level, difficulty, how many guesses left.  -->
+				<p>Your Name: <?php print $_SESSION['username'] ?></p>
                 <p>Your Stats:</p>
                 <p>Level: <?php print $_SESSION['level'] ?></p>
 				<p>Difficulty: <?php print $_SESSION['difficulty'] ?></p>
