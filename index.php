@@ -17,6 +17,23 @@ unset($_SESSION['progress']['difficulty']);
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Hangman Game</title>
     <link rel="stylesheet" href="styles.css">
+<style>
+        body {
+            font-family: 'Arial', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+            /* Set a light background color */
+            background-image: url('background.jpg_large');
+            /* Add background image */
+            background-size: cover;
+            /* Cover the entire viewport 
+            background-position: center;*/
+            /* Center the background image */
+            background-repeat: no-repeat;
+            /* Do not repeat the background image */
+        }
+    </style>
 </head>
 
 <body>
@@ -88,9 +105,7 @@ unset($_SESSION['progress']['difficulty']);
         </div>
         
         </main>
-        <footer>
-            <p>Team 6 Web development</p>
-        </footer>
+        
     </div>
 </body>
 </html>
