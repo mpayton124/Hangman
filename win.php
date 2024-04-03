@@ -1,5 +1,6 @@
 <?php
 session_start();
+var_dump($_SESSION);
 
 function updatePoints(){
     $lines = file("leaderboard_list.txt", FILE_IGNORE_NEW_LINES);
@@ -25,7 +26,7 @@ function updatePoints(){
     
     file_put_contents("leaderboard_list.txt", implode("\r\n", $lines));
     
-    // print"Points updated for $userToUpdate. Added $pointsToAdd points.";
+    print"Points updated for $userToUpdate. Added $pointsToAdd points.";
     
 }
 function finalWinScreen(){
@@ -35,14 +36,15 @@ function finalWinScreen(){
 }
 $path_difficulty = $_SESSION['progress']['difficulty'];
 $difficulty = $_SESSION['progress']['difficulty'];
+
 if ($_SESSION['progress']['level'] >= 3){
     if ($_SESSION['progress']['difficulty'] == "easy"){
         $path_difficulty = "medium";
-        unset($_SESSION['progress']['level']);
+        // unset($_SESSION['progress']['level']);
         $num =1;
     }else if ($_SESSION['progress']['difficulty'] == "medium"){
         $path_difficulty = "hard";
-        unset($_SESSION['progress']['level']);
+        // unset($_SESSION['progress']['level']);
         $num =1;
     }else{
         // level must be at hard, and we can't go any higher
@@ -50,8 +52,9 @@ if ($_SESSION['progress']['level'] >= 3){
     }
 }else
 {
-    
-    $num = ($_SESSION['progress']['level']+1);
+    print"test";
+    $num = (($_SESSION['progress']['level'])+1);
+    print $num;
 }
 ?>
 <!DOCTYPE html>
@@ -83,10 +86,15 @@ if ($_SESSION['progress']['level'] >= 3){
 <form action = "gamescreen.php" method = "post">
     <?php
  
-        
-        echo "<input type = 'hidden' name = 'difficulty' value = $path_difficulty>";
+        if ($path_difficulty == $_SESSION['progress']['difficulty']){
+            echo "<input type = 'hidden' name = 'difficulty_path_same' value = $path_difficulty>";
+            echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
+        }else{
+            echo "<input type = 'hidden' name = 'difficulty_path' value = $path_difficulty>";
 
-        echo "<button type = 'submit'>Continue to $path_difficulty $num</button>"
+            echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
+        }
+       
     ?>
 
    

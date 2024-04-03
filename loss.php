@@ -1,3 +1,7 @@
+<?php
+session_start();
+unset($_SESSION['progress']['level']);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

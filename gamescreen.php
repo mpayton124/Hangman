@@ -51,10 +51,22 @@ include 'words.php';
 
 
 //when posting difficulty (from main menu and transition to other words)
-if (isset($_POST['difficulty'])) {
+if (isset($_POST['difficulty_path'])){
+    unset($_SESSION['progress']['level']);
+}
+
+if (isset($_POST['difficulty']) or isset($_POST['difficulty_path']) or isset($_POST['difficulty_path_same'])) {
     //gets the difficulty from the form and sets it to the session variable
-    
-    $_SESSION['progress']['difficulty'] = $_POST['difficulty'];
+    //the reason theres so many ifs is because we have to check if the difficulty is being set from the main menu or from the win screen
+    //and if they are going to the same difficulty or go to the next one.
+    if (isset($_POST['difficulty_path'])){
+        $_SESSION['progress']['difficulty'] = $_POST['difficulty_path'];
+    }else if (isset($_POST['difficulty_path_same'])){
+        $_SESSION['progress']['difficulty'] = $_POST['difficulty_path_same'];
+    }else{
+        $_SESSION['progress']['difficulty'] = $_POST['difficulty'];
+    }
+   
     
     if (isset($_SESSION['progress']['level'])) {
         $_SESSION['progress']['level']++;
