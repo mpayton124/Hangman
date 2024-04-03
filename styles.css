@@ -1,15 +1,21 @@
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Arial', sans-serif;
     margin: 0;
     padding: 0;
+    background-color: #f0f0f0;
+
 }
 
+/* Adjust main container styles */
 .container {
-    max-width: 90%;
-    margin: 0 auto;
-    padding: 20px;
-    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    /* Ensure container takes up full viewport height */
 }
+
 
 header {
     text-align: center;
@@ -17,6 +23,16 @@ header {
 }
 
 h1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1px;
+    /* Adjust padding as needed */
+    background-color: #333;
+    /* Dark background color */
+    color: #fff;
+    /* White text color */
     margin: 0;
 }
 
@@ -31,6 +47,22 @@ h1 {
     padding: 10px 20px;
     margin-bottom: 20px;
     font-size: 18px;
+    background-color: white;
+    /* Set initial background color */
+    color: #4caf50;
+    /* Set initial text color */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.play-button:hover,
+.choose-difficulty:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+    color: white;
+    /* Change text color on hover */
 }
 
 .difficulty-dropdown {
@@ -68,17 +100,51 @@ h1 {
     display: block;
 }
 
-/* specific for hangman-game screen */
+/* Add background color to buttons and dropdown menu items on hover */
+.play-button:hover,
+.choose-difficulty:hover,
+.dropdown-content a:hover {
+    background-color: #45a049;
+    /* Darker green on hover */
+    color: white;
+    /* Change text color on hover */
+}
+
+/* Styling for Hangman game screen */
 #hangman-game {
     display: flex;
-    height: 100%;
-    width: 100%;
-    justify-content: center;
+    /* Set the container to flex */
+    align-items: flex-start;
+    /* Align items at the start of the cross axis (top of the container) */
+    justify-content: space-between;
+    /* Space items evenly along the main axis */
+    min-height: 100vh;
+    /* Set minimum height to 100% of viewport height */
+    padding: 20px;
+    /* Add padding to the sides */
+    box-sizing: border-box;
+    /* Ensure padding is included in element's total width */
+}
+
+.column {
+    padding: 20px;
+    border: 1px solid #ccc;
+    background-color: rgba(255, 255, 255, 0.4);
+    /* Transparent white background */
+    /* Adjust the alpha value (0.8) to make it more or less transparent */
+    border-radius: 20px;
+    /* Rounded corners */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    /* Add a subtle shadow */
+    width: 90%;
+    /* Set width for each column */
+    max-width: 600px;
+    /* Set maximum width for better readability */
 }
 
 .guessing {
-    width: 20%;
-
+    width: 40%;
+    /* Set guessing column width to 40% */
 }
 
 .letter-buttons {
@@ -89,32 +155,50 @@ h1 {
 
 .letter-buttons button {
     margin: 5px;
-    padding: 10px;
-    font-size: 40px;
-    border: 1px solid #ccc;
+    padding: 10px 20px;
+    font-size: 20px;
+    border: none;
     border-radius: 5px;
     cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
 .letter-buttons button:hover {
     background-color: #c7c793;
-
+    /* Lighter color on hover */
 }
 
-
-/* we can set a button to disabled with javascript once its already selected or guessed and make it red */
+/* Styling for correct and wrong guesses */
 .correct-guess {
     background-color: #8bc34a;
+    /* Light green for correct guesses */
+    color: white;
 }
+
 .wrong-guess {
     background-color: #f44336;
+    /* Red for wrong guesses */
+    color: white;
+}
+
+.word-display p {
+    font-size: 24px;
+    /* Increase font size for better readability */
 }
 
 .information {
-    width: 20%;
+    width: 30%;
+    /* Adjust width for better alignment */
 }
 
-.column {
-    padding: 20px;
-    border: 1px solid #ccc;
+.footer {
+    margin-top: 20px;
+    /* Add margin to the footer for spacing */
+}
+
+.footer p {
+    font-size: 14px;
+    /* Reduce font size for the footer text */
+    color: #777;
+    /* Darken footer text color */
 }
