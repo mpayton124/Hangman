@@ -33,8 +33,8 @@ function updatePoints(){
         list($username, $points) = explode(",", $line);
         if ($username == $userToUpdate) {        
             $points = $points + $pointsToAdd;
+			$line = "$username,$points";
         }
-        $line = "$username,$points";
     }
     
     file_put_contents("leaderboard_list.txt", implode("\r\n", $lines));
