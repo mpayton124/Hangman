@@ -1,16 +1,16 @@
-<!DOCTYPE html>
-<html>
 <?php
    session_start();
+   unset($_SESSION["username"]);  
+   header('Refresh: 3; URL = index.php');
 ?>
+<!DOCTYPE html>
+<html>
 <head>
 <title>Logout</title
 </head>
 <body>
 <?php
-   unset($_SESSION["username"]);   
    echo '<p>You have successfully logged out. You will be sent to the main menu shortly.</p>';
-   header('Refresh: 2; URL = index.php');
 ?>
 </body>
 </html>

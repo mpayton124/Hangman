@@ -9,8 +9,16 @@ if ($_SESSION['progress']['level'] == 6) {
 
 function updatePoints(){
     $lines = file("leaderboard_list.txt", FILE_IGNORE_NEW_LINES);
- 
-    $userToUpdate = $_SESSION['username'];
+
+
+    if (isset($_SESSION['username'])){
+        $loggedIn = true;
+        $userToUpdate = $_SESSION['username'];
+    }else{
+        $loggedIn = false;
+    }
+
+    
     $pointsToAdd = 0;
     if ($_SESSION['progress']['difficulty'] == "easy"){
         $pointsToAdd = 1;
@@ -19,7 +27,7 @@ function updatePoints(){
     }else{
         $pointsToAdd = 5;
     }
-
+    if ($loggedIn){
     foreach ($lines as &$line) {
    
         list($username, $points) = explode(",", $line);
@@ -30,8 +38,12 @@ function updatePoints(){
     }
     
     file_put_contents("leaderboard_list.txt", implode("\r\n", $lines));
-    
     print"You have earned $pointsToAdd points.";
+    }
+    else{
+        print"<p>You are not logged in, so you cannot earn points! :(</p>
+        <a href = 'login.html'><p>Log in or sign up to earn and save your points!</p></a>";
+    }
     
 }
 function finalWinScreen(){

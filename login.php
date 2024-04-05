@@ -1,17 +1,25 @@
-<!DOCTYPE html>
-<html>
 <?php
+    session_start();
 	error_reporting(E_ALL);
 	ini_set('display_errors', 1);
-   session_start();
    
-   function usernameExists($username) {
+   
+   function usernameExists($usernameInput) {
     $filename = 'leaderboard_list.txt';
-    $usernames = file($filename, FILE_IGNORE_NEW_LINES);
-    return in_array($username, $usernames);
+    $lines = file($filename, FILE_IGNORE_NEW_LINES);
+
+    foreach ($lines as $line) {
+        list($username, $points) = explode(",", $line);
+        if ($usernameInput == $username) {
+            return true;
+        }
+    }
+    // return in_array($username, $usernames);
    }
 	   
 ?>
+<!DOCTYPE html>
+<html>
 <head>
 <title>Login</title>
 </head>
@@ -24,7 +32,7 @@ if (usernameExists($username)) {
 	?> <p>Welcome back, <?php echo $_SESSION['username']; ?>. You can return home <a href = "index.php">here.</a></p> <?php 
 } else {
 	$filename = 'leaderboard_list.txt';
-    file_put_contents($filename, $username . ',0' . PHP_EOL, FILE_APPEND);
+    file_put_contents($filename, "\n"."$username,0", FILE_APPEND);
     $_SESSION["username"] = $username;
 	?> <p>Welcome, <?php echo $_SESSION['username']; ?>. You can return home <a href = "index.php">here.</a></p> <?php
 }
