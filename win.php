@@ -80,13 +80,7 @@ if ($_SESSION['progress']['level'] >= 3){
 <form action = "index.php" method = "post">
     <button type = "submit">Main Menu</button>
 </form>
-<h2> More of <?php $path_difficulty ?> levels </h2>
-<form action = "gamescreen.php" method = "post">
-            <?php
-            echo "<input type = 'hidden' name = 'difficulty' value = $difficulty>";
-            echo "<button type = 'submit'>Play more From $difficulty </button>";
-            ?>
-	</form>
+
 <h2> Or continue on!</h2>
 <form action = "gamescreen.php" method = "post">
     <?php
