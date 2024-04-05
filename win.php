@@ -6,6 +6,7 @@ if ($_SESSION['progress']['level'] == 6) {
 	header("Location: finalwin.php");
 }
 
+
 function updatePoints(){
     $lines = file("leaderboard_list.txt", FILE_IGNORE_NEW_LINES);
  

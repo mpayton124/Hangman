@@ -227,3 +227,7 @@ th {
     color: #777;
     /* Darken footer text color */
 }
+
+.backlit {
+	background-color: #FFFFFF;
+}

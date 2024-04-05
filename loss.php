@@ -1,6 +1,7 @@
 <?php
 session_start();
 unset($_SESSION['progress']['level']);
+unset($_SESSION['progress']['difficulty']);
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -10,12 +11,11 @@ unset($_SESSION['progress']['level']);
     <title>Document</title>
 </head>
 <body>
-    YOU LOST!
-    could do something similar to the win screen, reusing buttons etc.
+    <p>YOU LOST!</p>
+	<p>Better luck next time...</p>
     <!-- going back to main menu: -->
-<form action = "index.php" method = "post">
+	<form action = "index.php" method = "post">
     <button type = "submit">Main Menu</button>
-    <p>add thing that lets them go back to main menu</p>
     
 </body>
 </html>
