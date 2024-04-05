@@ -2,6 +2,11 @@
 session_start();
 var_dump($_SESSION);
 
+if ($_SESSION['progress']['level'] == 6) {
+	header("Location: finalwin.php");
+}
+
+
 function updatePoints(){
     $lines = file("leaderboard_list.txt", FILE_IGNORE_NEW_LINES);
  
@@ -26,7 +31,7 @@ function updatePoints(){
     
     file_put_contents("leaderboard_list.txt", implode("\r\n", $lines));
     
-    print"Points updated for $userToUpdate. Added $pointsToAdd points.";
+    print"You have earned $pointsToAdd points.";
     
 }
 function finalWinScreen(){
@@ -62,7 +67,7 @@ if ($_SESSION['progress']['level'] >= 3){
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>You Won!</title>
 </head>
 <body>
 <?php
@@ -71,18 +76,20 @@ if ($_SESSION['progress']['level'] >= 3){
 ?>
 
 <!-- going back to main menu: -->
-<h2> Main Menu </h2>
+<h2>You can head home here...</h2>
 <form action = "index.php" method = "post">
     <button type = "submit">Main Menu</button>
 </form>
+
 <h2> More of <?php $path_difficulty ?> levels </h2>
 <form action = "gamescreen.php" method = "post">
             <?php
             echo "<input type = 'hidden' name = 'difficulty' value = $difficulty>";
             echo "<button type = 'submit'>Play more From $difficulty </button>";
             ?>
-	</form>
-<h2> Or continue Path! </h2>
+       </form>
+
+<h2> Or continue on!</h2>
 <form action = "gamescreen.php" method = "post">
     <?php
  

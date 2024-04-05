@@ -3,7 +3,7 @@ session_start();
 var_dump($_SESSION);
 // $_SESSION['Testing'] = "THIS IS A TEST";
 
-$_SESSION['username'] = 'TestUser';
+
 
 //flush
 unset($_SESSION['progress']['level']);
@@ -56,6 +56,13 @@ unset($_SESSION['progress']['difficulty']);
                 </div>
             </div>
 		</form>
+        <div style="background-color:white; padding:15px;">
+		<?php if(isset($_SESSION['username'])) { ?>
+		<p>Welcome back, <span class="bold"><?php print $_SESSION['username']?></span>. You can logout <a href = "logout.php">here</a>.</p>
+		<?php } else { ?>
+		<p>Welcome! Please login or register <a href = "login.html">here</a>.</p>
+		<?php } ?>
+        </div>
         <div id="leaderboard">
             <h2>Current leaderboard</h2>
             <?php
@@ -94,6 +101,7 @@ unset($_SESSION['progress']['difficulty']);
                     }
                 }
                 if (!$user_found){
+                    //if user is not in top 5, display them like ... ...  then their name and points
                     echo "<tr><td>...</td><td>...</td></tr>";
                     echo "<tr style='background-color:#F7D488'><td>".$_SESSION['username']."</td><td>".$userPoints."</td></tr>";
                 }
