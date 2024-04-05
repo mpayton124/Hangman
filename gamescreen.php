@@ -134,7 +134,7 @@ if (isset($_POST['difficulty']) or isset($_POST['difficulty_path']) or isset($_P
     </style>
 </head>
 <body>
-    <div class="container">
+    <div class="container game-screen-container">
         <header>
             <h1>Hangman Game</h1>
             <!-- we can replace this with a php function  -->
@@ -145,10 +145,10 @@ if (isset($_POST['difficulty']) or isset($_POST['difficulty_path']) or isset($_P
             <div class="column information">
                 <!-- information area -->
                 <!-- including level, difficulty, how many guesses left.  -->
-                <p>Your Stats:</p>
-                <p>Level: <?php print $_SESSION['progress']['level'] ?></p>
-				<p>Difficulty: <?php print $_SESSION['progress']['difficulty'] ?></p>
-				<p>Attempts left: <?php print $_SESSION['attempts']?></p>
+                <h2>Your Stats:</h2>
+                <p><span class="bold">Level</span>: <?php print $_SESSION['progress']['level'] ?></p>
+				<p><span class="bold">Difficulty</span>: <?php print $_SESSION['progress']['difficulty'] ?></p>
+				<p><span class="bold">Attempts left</span>: <?php print $_SESSION['attempts']?></p>
             </div>
 
             <div class="column hangman">
@@ -167,7 +167,7 @@ if (isset($_POST['difficulty']) or isset($_POST['difficulty_path']) or isset($_P
             <div class="column guessing">
                 <!-- Guess input area -->
 
-                <p>Guessing part</p>
+                <h2>Guessing</h2>
                 <form action="gamescreen.php" method="post">
                 <div class="letter-buttons">
                     <?php
@@ -195,7 +195,7 @@ if (isset($_POST['difficulty']) or isset($_POST['difficulty_path']) or isset($_P
 
 
         <footer>
-            <p>Team 6 Web development</p>
+            <p style="color:white">Team 6 Web development</p>
             <!-- we can replace this with a php function but we dont gotta-->
         </footer>
     </div>

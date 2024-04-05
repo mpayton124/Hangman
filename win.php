@@ -91,7 +91,6 @@ if ($_SESSION['progress']['level'] >= 3){
             echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
         }else{
             echo "<input type = 'hidden' name = 'difficulty_path' value = $path_difficulty>";
-
             echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
         }
        
@@ -101,6 +100,6 @@ if ($_SESSION['progress']['level'] >= 3){
 
 </form>
 
-<p>also showing them the full word that they got correct</p>
+
 </body>
 </html>
