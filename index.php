@@ -63,9 +63,19 @@ unset($_SESSION['progress']['difficulty']);
 		<p>Welcome! Please login or register <a href = "login.html">here</a>.</p>
 		<?php } ?>
         </div>
+
+
         <div id="leaderboard">
             <h2>Current leaderboard</h2>
             <?php
+                
+                if (isset($_SESSION['username'])){
+                    $loggedIn = true;
+
+                }else{
+                    $loggedIn = false;
+                }
+
                 $leaderboard = [];
                 $userPoints=0;
                 $fileContents = file_get_contents('leaderboard_list.txt');
@@ -75,7 +85,8 @@ unset($_SESSION['progress']['difficulty']);
                     $username = trim($parts[0]);
                     $points = trim($parts[1]);
                     $leaderboard[$username] = $points;
-                    if ($username == $_SESSION['username']) {
+                    
+                    if ($loggedIn and $username == $_SESSION['username']) {
                         $userPoints = $points;
                     }
                 }
@@ -89,7 +100,7 @@ unset($_SESSION['progress']['difficulty']);
                 $counter = 0;
                 $user_found = false;
                 foreach ($leaderboard as $username => $points) {
-                    if ($username == $_SESSION['username']){
+                    if ($loggedIn and $username == $_SESSION['username']){
                         echo "<tr style='background-color:#F7D488'><td>$username</td><td>$points</td></tr>";
                         $user_found = true;
                     }else{
@@ -100,7 +111,7 @@ unset($_SESSION['progress']['difficulty']);
                         break;
                     }
                 }
-                if (!$user_found){
+                if ($loggedIn and !$user_found){
                     //if user is not in top 5, display them like ... ...  then their name and points
                     echo "<tr><td>...</td><td>...</td></tr>";
                     echo "<tr style='background-color:#F7D488'><td>".$_SESSION['username']."</td><td>".$userPoints."</td></tr>";
@@ -108,6 +119,9 @@ unset($_SESSION['progress']['difficulty']);
                
 
                 echo "</table>";
+                if (!$loggedIn){
+                    echo "<a href = 'login.html'><p>Sign in or Sign up to save your points!</p></a>";
+                }
 
             ?>
         </div>
