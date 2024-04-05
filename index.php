@@ -3,7 +3,7 @@ session_start();
 var_dump($_SESSION);
 // $_SESSION['Testing'] = "THIS IS A TEST";
 
-$_SESSION['username'] = 'TestUser';
+
 
 //flush
 unset($_SESSION['progress']['level']);
@@ -56,6 +56,11 @@ unset($_SESSION['progress']['difficulty']);
                 </div>
             </div>
 		</form>
+		<?php if(isset($_SESSION['username'])) { ?>
+		<p>Welcome back, <?php print $_SESSION['username']?>. You can logout <a href = "logout.php">here</a>.</p>
+		<?php } else { ?>
+		<p>Welcome! Please login or register <a href = "login.html">here</a>.</p>
+		<?php } ?>
         <div id="leaderboard">
             <h2>Current leaderboard</h2>
             <?php

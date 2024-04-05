@@ -2,6 +2,10 @@
 session_start();
 var_dump($_SESSION);
 
+if ($_SESSION['progress']['level'] == 6) {
+	header("Location: finalwin.php");
+}
+
 function updatePoints(){
     $lines = file("leaderboard_list.txt", FILE_IGNORE_NEW_LINES);
  
@@ -100,7 +104,5 @@ if ($_SESSION['progress']['level'] >= 3){
    
 
 </form>
-
-<p>also showing them the full word that they got correct</p>
 </body>
 </html>
