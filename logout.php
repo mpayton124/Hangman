@@ -1,12 +1,13 @@
 <?php
    session_start();
    unset($_SESSION["username"]);  
-   header('Refresh: 3; URL = index.php');
+   header('Refresh: 2; URL = index.php');
 ?>
 <!DOCTYPE html>
 <html>
 <head>
-<title>Logout</title
+<title>Logout</title>
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <?php

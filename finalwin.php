@@ -9,6 +9,13 @@ unset($_SESSION['progress']['difficulty']);
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>YOU WON!</title>
+	<link rel="stylesheet" href="winloss.css">
+	<style>
+	body {
+            background-image: url('finalwin.png');
+            background-size: cover;
+        }
+	</style>
 </head>
 <body>
     <p>Game Over!</p>

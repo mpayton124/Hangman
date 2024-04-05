@@ -1,0 +1,25 @@
+body {
+    font-family: 'Arial', sans-serif;
+    margin: 20px top;
+    padding: 0;
+    background-color: #f0f0f0;
+	text-align: center;
+}
+
+header {
+    margin-bottom: 20px;
+}
+
+h1 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    padding: 1px;
+    /* Adjust padding as needed */
+    background-color: #333;
+    /* Dark background color */
+    color: #fff;
+    /* White text color */
+    margin: 0;
+}
