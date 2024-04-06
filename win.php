@@ -1,6 +1,5 @@
 <?php
 session_start();
-var_dump($_SESSION);
 
 if ($_SESSION['progress']['level'] == 6) {
 	header("Location: finalwin.php");
@@ -69,9 +68,8 @@ if ($_SESSION['progress']['level'] >= 3){
     }
 }else
 {
-    print"test";
+   
     $num = (($_SESSION['progress']['level'])+1);
-    print $num;
 }
 ?>
 <!DOCTYPE html>
@@ -89,40 +87,41 @@ if ($_SESSION['progress']['level'] >= 3){
 	</style>
 </head>
 <body>
-<?php
- echo "<h2>YOU WON!</h2><br><p>Word: " . $_SESSION['word'] . "</p>";
- updatePoints();
-?>
+    <div style="height:50%">
+        <?php
+        echo "<h2>Congrats! </h2><br><h3>Word: " . $_SESSION['word'] . "</h3>";
+        updatePoints();
+        ?>
 
-<!-- going back to main menu: -->
-<h2>You can head home here...</h2>
-<form action = "index.php" method = "post">
-    <button type = "submit">Main Menu</button>
-</form>
+        <!-- going back to main menu: -->
+        <h2>You can head home here...</h2>
+        <form action = "index.php" method = "post">
+            <button type = "submit">Main Menu</button>
+        </form>
 
-<h2> Or continue on!</h2>
-<form action = "gamescreen.php" method = "post">
-    <?php
- 
-        if ($path_difficulty == $_SESSION['progress']['difficulty']){
-            echo "<input type = 'hidden' name = 'difficulty_path_same' value = $path_difficulty>";
-            echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
-        }else{
-            echo "<input type = 'hidden' name = 'difficulty_path' value = $path_difficulty>";
-            echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
-        }
-       
-    ?>
-</form>
-
-<h2> More of <?php $path_difficulty ?> levels </h2>
-<form action = "gamescreen.php" method = "post">
+        <h2> Or continue on!</h2>
+        <form action = "gamescreen.php" method = "post">
             <?php
-            echo "<input type = 'hidden' name = 'difficulty' value = $difficulty>";
-            echo "<button type = 'submit'>Play more From $difficulty </button>";
+        
+                if ($path_difficulty == $_SESSION['progress']['difficulty']){
+                    echo "<input type = 'hidden' name = 'difficulty_path_same' value = $path_difficulty>";
+                    echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
+                }else{
+                    echo "<input type = 'hidden' name = 'difficulty_path' value = $path_difficulty>";
+                    echo "<button type = 'submit'>Continue to $path_difficulty $num</button>";
+                }
+            
             ?>
-       </form>
+        </form>
 
+        <h2> More of <?php $difficulty ?> levels </h2>
+        <form action = "gamescreen.php" method = "post">
+                    <?php
+                    echo "<input type = 'hidden' name = 'difficulty' value = $difficulty>";
+                    echo "<button type = 'submit'>Play more From $difficulty </button>";
+                    ?>
+            </form>
 
+    </div>
 </body>
 </html>

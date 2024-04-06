@@ -12,17 +12,22 @@ unset($_SESSION['progress']['difficulty']);
 	<link rel="stylesheet" href="winloss.css">
 	<style>
 	body {
-        background-image: url('lose.png');
-		background-size: 1200px 500px;
+        background-image: url('images/lose.svg');
+		background-size: cover;
         }
 	</style>
 </head>
 <body>
-    <p>YOU LOST!</p>
-	<p>Better luck next time...</p>
-    <!-- going back to main menu: -->
-	<form action = "index.php" method = "post">
-    <button type = "submit">Main Menu</button>
+    <div style="background-color:#cf5545; width: 30%;
+    height: 20%;">
+        <h1>YOU LOST!</h1>
+        <?php
+        echo "<h2>Word: " . $_SESSION['word'] . "</h2>";
+        ?>
+        <!-- going back to main menu: -->
+        <form action = "index.php" method = "post">
+        <button type = "submit">Main Menu</button>
+    </div>
     
 </body>
 </html>
