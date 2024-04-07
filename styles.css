@@ -112,16 +112,20 @@ h1 {
     border: 1px solid #ccc;
     border-radius: 5px;
 }
+
 table {
     border-collapse: collapse;
     width: 60%;
     text-align: center;
 }
-th, td {
+
+th,
+td {
     border: 1px solid black;
     padding: 8px;
     text-align: left;
 }
+
 th {
     background-color: #d1dab0;
 }
@@ -134,6 +138,72 @@ th {
     /* Darker green on hover */
     color: white;
     /* Change text color on hover */
+}
+
+/* Login logout styles */
+form {
+    margin-top: 50px;
+    text-align: center;
+}
+
+label {
+    font-size: 18px;
+    color: #333;
+}
+
+input[type="text"] {
+    padding: 10px;
+    margin: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    transition: border-color 0.3s ease;
+}
+
+input[type="text"]:focus {
+    border-color: #007bff;
+}
+
+input[type="submit"] {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 18px;
+    transition: background-color 0.3s ease;
+}
+
+input[type="submit"]:hover {
+    background-color: #0056b3;
+}
+
+/* Message styles */
+.message {
+    text-align: center;
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #d4edda;
+    border: 1px solid #c3e6cb;
+    color: #155724;
+    border-radius: 5px;
+}
+
+/* Logout page styles */
+.logout-message {
+    text-align: center;
+    margin-top: 100px;
+    color: #333;
+}
+
+/* Link styles */
+a {
+    color: #007bff;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
 }
 
 /* Styling for Hangman game screen */
@@ -228,9 +298,11 @@ th {
     color: #c4c0c0;
     /* Darken footer text color */
 }
-.game-screen-container{
-    color:#f0f0f0
+
+.game-screen-container {
+    color: #f0f0f0
 }
-.bold{
+
+.bold {
     font-weight: bold;
 }
