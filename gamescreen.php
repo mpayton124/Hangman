@@ -55,6 +55,10 @@ if (isset($_POST['difficulty_path'])){
     unset($_SESSION['progress']['level']);
 }
 
+if (!isset($_SESSION['progress']['totalwins'])) {
+        $_SESSION['progress']['totalwins'] = 0;
+    }
+
 if (isset($_POST['difficulty']) or isset($_POST['difficulty_path']) or isset($_POST['difficulty_path_same'])) {
     //gets the difficulty from the form and sets it to the session variable
     //the reason theres so many ifs is because we have to check if the difficulty is being set from the main menu or from the win screen

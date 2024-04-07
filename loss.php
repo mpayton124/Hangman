@@ -2,6 +2,7 @@
 session_start();
 unset($_SESSION['progress']['level']);
 unset($_SESSION['progress']['difficulty']);
+unset($_SESSION['progress']['totalwins']);
 ?>
 <!DOCTYPE html>
 <html lang="en">

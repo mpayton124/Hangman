@@ -8,6 +8,7 @@ var_dump($_SESSION);
 //flush
 unset($_SESSION['progress']['level']);
 unset($_SESSION['progress']['difficulty']);
+unset($_SESSION['progress']['totalwins']);
 
 ?>
 <!DOCTYPE html>

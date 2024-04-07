@@ -1,7 +1,8 @@
 <?php
 session_start();
 
-if ($_SESSION['progress']['level'] == 6) {
+$_SESSION['progress']['totalwins'] = (($_SESSION['progress']['totalwins']) + 1);
+if ($_SESSION['progress']['totalwins'] == 6) {
 	header("Location: finalwin.php");
 }
 
@@ -64,7 +65,8 @@ if ($_SESSION['progress']['level'] >= 3){
         $num =1;
     }else{
         // level must be at hard, and we can't go any higher
-        finalWinScreen();
+        // finalWinScreen();
+		$num = (($_SESSION['progress']['level']) + 1);
     }
 }else
 {
