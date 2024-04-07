@@ -35,7 +35,7 @@
             $filename = 'leaderboard_list.txt';
             file_put_contents($filename, "$username,0\n", FILE_APPEND);
             $fileContents = file_get_contents($filename);
-            echo "File contents after adding user: <pre>$fileContents</pre>"; //debugging
+            // echo "File contents after adding user: <pre>$fileContents</pre>"; debugging
             $_SESSION["username"] = $username;
             ?> <p>Welcome, <?php echo $_SESSION['username']; ?>. You can return home <a href = "index.php">here.</a></p> <?php
         }
