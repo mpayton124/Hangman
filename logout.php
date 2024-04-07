@@ -10,8 +10,10 @@
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
+<div class="logout-message">
 <?php
    echo '<p>You have successfully logged out. You will be sent to the main menu shortly.</p>';
 ?>
+</div>
 </body>
 </html>
